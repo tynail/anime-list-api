@@ -4,6 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const mongoString = process.env.DATABASE_URL;
 const app = express();
+const routes = require("./routes/routes");
 
 mongoose.connect(mongoString);
 const database = mongoose.connection;
@@ -21,3 +22,6 @@ app.use(express.json());
 app.listen(3000, () => {
   console.log(`Server Started at ${3000}`);
 });
+
+// Take base enpoint and content of the routes, meaning all the endpoint will start from '/api'
+app.use("/api", routes);
