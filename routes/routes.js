@@ -41,7 +41,7 @@ router.get("/serie/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const serie = await Serie.findById(id);
-    res.status(200).json({ serie });
+    res.status(200).json(serie);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
